@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: Container is started
+    community.general.docker_container:
+      container_default_behavior: compatibility
+      name: mycontainer
+      state: started
+      image: centos:7
+      command: "sleep infinity"
+

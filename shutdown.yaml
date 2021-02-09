@@ -1,0 +1,9 @@
+---
+- hosts: vbox
+  become: true
+  become_user: root
+  remote_user: ansibleadm
+  tasks:
+  - name: Delay shutting down the remote node
+    community.general.shutdown:
+      delay: 30
