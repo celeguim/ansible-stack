@@ -1,0 +1,17 @@
+---
+- hosts: loadbalancer
+  become: true
+  remote_user: ansibleadm
+  tasks:
+
+  - name: repo is enabled 
+    get_url:
+      url: https://cs.nginx.com/static/files/nginx-plus-7.4.repo
+      dest: /etc/yum.repos.d
+      mode: 0440
+
+  - name: nginx is installed
+    yum: name=nginx state=present
+
+  - name: nginx is started
+    service: name=nginx state=started enabled=yes

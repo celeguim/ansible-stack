@@ -1,0 +1,11 @@
+---
+- hosts: webserver
+  become: true
+  remote_user: ansibleadm
+  tasks:
+
+  - name: web components are installed
+    yum: name=httpd state=present
+
+  - name: httpd is started
+    service: name=httpd state=started enabled=yes

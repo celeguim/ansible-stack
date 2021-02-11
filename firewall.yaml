@@ -1,0 +1,27 @@
+---
+- hosts: local
+  become: true
+  become_user: root
+  remote_user: ansibleadm
+
+  tasks:
+  - name: Allow everything and enable UFW
+    community.general.ufw:
+      state: enabled
+      policy: allow
+
+  - name: Set logging
+    community.general.ufw:
+      logging: 'on'
+
+  - name: Allow all access to tcp port 80
+    community.general.ufw:
+      rule: allow
+      port: '80'
+      proto: tcp
+
+  - name: Allow port range 60000-61000
+    community.general.ufw:
+      rule: allow
+      port: 60000:61000
+      proto: tcp

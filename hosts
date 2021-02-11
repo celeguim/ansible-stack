@@ -2,6 +2,7 @@ local:
   hosts:
     localhost:
       ansible_connection: local
+      ansible_python_interpreter: /usr/bin/python3
 
 vbox:
   hosts:
@@ -16,4 +17,25 @@ vbox:
       ansible_host: 192.168.56.103
     db:
       ansible_python_interpreter: /usr/bin/python3
+      ansible_host: 192.168.56.104
+
+loadbalancer:
+  hosts:
+    loadbalancer:
+      ansible_python_interpreter: /usr/bin/python
+      ansible_host: 192.168.56.101
+
+webserver:
+  hosts:
+    web1:
+      ansible_python_interpreter: /usr/bin/python
+      ansible_host: 192.168.56.102
+    web2:
+      ansible_python_interpreter: /usr/bin/python
+      ansible_host: 192.168.56.103
+
+database:
+  hosts:
+    db01:
+      ansible_python_interpreter: /usr/bin/python
       ansible_host: 192.168.56.104

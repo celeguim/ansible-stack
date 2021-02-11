@@ -1,2 +1,4 @@
 ansible -m ping -i hosts all --user ansibleadm
+
+
 ansible-galaxy collection install community.general

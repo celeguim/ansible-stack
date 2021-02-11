@@ -1,0 +1,30 @@
+---
+- hosts: loadbalancer
+  become: true
+  remote_user: ansibleadm
+  tasks:
+  - service: name=nginx state=stopped
+
+- hosts: webserver
+  become: true
+  remote_user: ansibleadm
+  tasks:
+  - service: name=httpd state=stopped
+
+- hosts: database
+  become: true
+  remote_user: ansibleadm
+  tasks:
+  - service: name=mariadb state=restarted
+
+- hosts: webserver
+  become: true
+  remote_user: ansibleadm
+  tasks:
+  - service: name=httpd state=started
+
+- hosts: loadbalancer
+  become: true
+  remote_user: ansibleadm
+  tasks:
+  - service: name=nginx state=started

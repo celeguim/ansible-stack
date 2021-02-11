@@ -1,0 +1,11 @@
+---
+- hosts: database
+  become: true
+  remote_user: ansibleadm
+  tasks:
+
+  - name: mariadb-server is installed
+    yum: name=mariadb-server state=present
+
+  - name: mariadb is started
+    service: name=mariadb state=started enabled=yes
